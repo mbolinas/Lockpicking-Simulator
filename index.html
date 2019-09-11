@@ -9,18 +9,24 @@
     </head>
     <body>
         <div class='game-window'>
-            <div class='game-window__game-options'>
-                <input 
-                    type='checkbox'
+            <h1 class='game-title'>Lockpicking Simulator</h1>
 
+            <div class='game-window__game-options'>
+                <label class='switch'>
+                    <input class='switch__input'
+                        type='checkbox'
+                    />
+                    <span class='switch__slider'>
+                    </span>
+                    Hard mode
+                </label>
+                <input 
+                    type='button'
+                    value='Randomize'
                 />
                 <input 
                     type='button'
-                    value='Reset'
-                />
-                <input 
-                    type='button'
-                    value='Start'
+                    value='Restart'
                 />
             </div>
             <div class='lockpick-container'>
