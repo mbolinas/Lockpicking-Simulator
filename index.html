@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <script src='http://code.jquery.com/jquery-3.4.1.min.js' integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous'></script>
-        <script src='index.js'></script>
-        <link rel='stylesheet' type='text/css' href='reset.css'>
-        <link rel='stylesheet' type='text/css' href='base.css'>
-        <link rel='stylesheet' type='text/css' href='index.css'>
-    </head>
-    <body>
-        <div class='game-window'>
-            <div class='game-window__game-options'>
-                <input 
-                    type='checkbox'
 
-                />
-                <input 
-                    type='button'
-                    value='Reset'
-                />
-                <input 
-                    type='button'
-                    value='Start'
-                />
-            </div>
-            <div class='lockpick-container'>
-                <img class='image-lock'
-                    alt='lock-img'
-                />
-                <img class='image-lockpick'
-                    alt='lockpick-img'
-                />
+<head>
+    <script src='node_modules/jquery/dist/jquery.min.js'></script>
+    <script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
+    <script src='index.js'></script>
+
+    <link rel='stylesheet' type='text/css' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
+    <link rel='stylesheet' type='text/css' href='reset.css'>
+    <link rel='stylesheet' type='text/css' href='base.css'>
+    <link rel='stylesheet' type='text/css' href='index.css'>
+</head>
+
+<body>
+    <div class='game-window'>
+        <div class='game-window__game-options'>
+            <input type='checkbox' />
+            <input type='button' value='Reset' />
+            <input type='button' value='Start' />
+            <input type='button' value='How to Play' data-toggle="modal" data-target="#modalInfo"/>
+        </div>
+        <div class='lockpick-container'>
+            <img class='image-lock' alt='lock-img' />
+            <img class='image-lockpick' alt='lockpick-img' />
+        </div>
+    </div>
+
+
+    <!-- Modal for How to Play -->
+    <div id="modalInfo" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header float-center">
+                    <h2>How to Play</h2>
+                </div>
+                <div class="modal-body text-left">
+                    <ul>
+                        <li>Fuck you</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" default>Close</button>
+                </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
