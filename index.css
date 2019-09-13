@@ -1,16 +1,30 @@
 .game-window{
     width: 100vw;
     height: 100vh;
-    background-color: rgb(200,200,200);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+	background: linear-gradient(-45deg, rgb(91, 153, 182), #EE7752, rgb(243, 188, 37), rgb(226, 128, 205));
+	background-size: 400% 400%;
+	-webkit-animation: Gradient 15s ease infinite;
+	-moz-animation: Gradient 15s ease infinite;
+    animation: Gradient 15s ease infinite;
+    color: black;
+    padding-left: 8vw;
+    padding-right: 8vw;
+
 }
+
+.game-title{
+    font-size: 3.33rem;
+    padding-top: 8vh;
+    padding-bottom: 8vh; 
+}
+
 .game-window__game-options{
-    background-color: rgb(0,0,100);
-    max-width: 90vw;
-    max-height: 80vh;
+    background-color: rgba(255,255,255,.4);
+    height: 10vh;
+    border-radius: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .lockpick-container{
@@ -22,10 +36,116 @@
 
 
 .image-lock{
-    display: absolute;
+    position: absolute;
     width: 600px;
 }
 
 .image-lockpick{
     width: 400px;
+}
+
+
+
+@-webkit-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@-moz-keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+@keyframes Gradient {
+	0% {
+		background-position: 0% 50%
+	}
+	50% {
+		background-position: 100% 50%
+	}
+	100% {
+		background-position: 0% 50%
+	}
+}
+
+.switch-container{
+    display: flex;
+    align-items: center;
+}
+
+.switch{
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-right: 17px;
+}
+
+  /* Hide default HTML checkbox */
+.switch__input{
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+  
+  /* The slider */
+.switch__slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 34px;
+}
+  
+.switch__slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+  
+.switch__input:checked + .switch__slider{
+    background-color: #2196F3;
+}
+  
+.switch__input:focus + .switch__slider{
+    box-shadow: 0 0 1px #2196F3;
+}
+  
+.switch__input:checked + .switch__slider:before{
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+button{
+    padding: 10px;
+    background-color: white;
+    border-radius: 16px;
 }
