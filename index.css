@@ -15,6 +15,8 @@
 
 .lockpick-container{
     background-color: green;
+    max-width: 30vw;
+    max-height: 20vh;
 }
 
 
