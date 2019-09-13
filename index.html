@@ -19,27 +19,18 @@
 
             <div class='game-window__game-options'>
                 <button>
-                    <h3>
-                        Randomize
-                    </h3>
+                    <h3>Randomize</h3>
                 </button>
                 <button>
-                    <h3>
-                        Restart
-                    </h3>
+                    <h3>Restart</h3>
                 </button>
-                <input type='button' value='How to Play' data-toggle="modal" data-target="#modalInfo"/>
+                <button data-toggle="modal" data-target="#modalInfo"><h3>How to Play</h3></button>
                 <div class='switch-container'>
                     <label class='switch'>
-                        <input class='switch__input'
-                            type='checkbox'
-                        />
-                        <span class='switch__slider'>
-                        </span>
+                        <input class='switch__input' type='checkbox'/>
+                        <span class='switch__slider' id="level-switch"></span>
                     </label>
-                    <h3>
-                        Hard Mode
-                    </h3>
+                    <h3 id="level-label">Easy Mode</h3>
                 </div>
             </div>
             <div class='lockpick-container'>
