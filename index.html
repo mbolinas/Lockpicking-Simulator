@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <script src='node_modules/jquery/dist/jquery.min.js'></script>
-    <script src='node_modules/bootstrap/dist/js/bootstrap.min.js'></script>
-    <script src='index.js'></script>
 
-    <link rel='stylesheet' type='text/css' href='node_modules/bootstrap/dist/css/bootstrap.min.css'>
+<head>
+    <script src='http://code.jquery.com/jquery-3.4.1.min.js'
+        integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=' crossorigin='anonymous'></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src='index.js'></script>
     <link rel='stylesheet' type='text/css' href='reset.css'>
     <link rel='stylesheet' type='text/css' href='base.css'>
     <link rel='stylesheet' type='text/css' href='index.css'>
@@ -13,18 +19,31 @@
 
 <body>
     <div class='game-window'>
+        <h1 class='game-title'>Lockpicking Simulator</h1>
+
         <div class='game-window__game-options'>
-            <input type='checkbox' />
-            <input type='button' value='Reset' />
-            <input type='button' value='Start' />
-            <input type='button' value='How to Play' data-toggle="modal" data-target="#modalInfo"/>
+            <button>
+                <h3>Randomize</h3>
+            </button>
+            <button>
+                <h3>Restart</h3>
+            </button>
+            <button data-toggle="modal" data-target="#modalInfo">
+                <h3>How to Play</h3>
+            </button>
+            <div class='switch-container'>
+                <label class='switch'>
+                    <input class='switch__input' type='checkbox' />
+                    <span class='switch__slider' id="level-switch"></span>
+                </label>
+                <h3 id="level-label">Easy Mode</h3>
+            </div>
         </div>
         <div class='lockpick-container'>
             <img class='image-lock' alt='lock-img' />
             <img class='image-lockpick' alt='lockpick-img' />
         </div>
     </div>
-
 
     <!-- Modal for How to Play -->
     <div id="modalInfo" class="modal fade" role="dialog">
