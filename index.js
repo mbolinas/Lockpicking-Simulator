@@ -32,6 +32,5 @@ var pin=function(pinId){
 
         }
 
-    };
-
+    }
 }
