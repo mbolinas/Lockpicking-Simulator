@@ -9,6 +9,7 @@ $(function () {
     });
 
     $(document).keypress(function (evt) {
+        movePin();
         switch (evt.which) {
             // left
             case 100:
@@ -34,4 +35,19 @@ $(function () {
         }
         evt.preventDefault(); // prevent the default action (scroll / move caret)
     });
+
+    function movePin(){
+        let test = $('.image-pin').filter(element => {
+            overlap(element, $('#pick'))
+        });
+
+        console.log(test);
+    }
+
+    function overlap(pin, pick){
+        return pin.right < pick.left || 
+            pin.left > pick.right || 
+            pin.bottom < pick.top || 
+            pin.top > pick.bottom
+    }
 });
