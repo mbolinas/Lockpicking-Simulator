@@ -58,9 +58,9 @@ $(function(){
     //TODO:
     //make update() handle lockpick positioning onto correct pin
     function update(){
-        var pin_pos = $('#pin' + selected_pin).offset();
+        var pin_pos = $('#chamber' + selected_pin).offset();
         //alert(pin_pos.left);
-        $('.image-lockpick').css(pin_pos);
+        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
         //$('.game-title').text('current pin: ' + selected_pin + ';     time (-1 for done): ' + pin_array[selected_pin] + 'str: ' + str);
     }
 
