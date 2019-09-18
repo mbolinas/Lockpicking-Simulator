@@ -3,6 +3,7 @@
 // right arrow - 39 or ArrowRight
 var lockpickGame = function(){
     var self = this;
+    this.fails = 0;
 
     this.options={
         //put a bunch of game stuff here
@@ -14,6 +15,16 @@ var lockpickGame = function(){
 
     
     //on up arrow press, run activatePin for a given pinId.
+    do{ 
+        var x = event.keyCode;
+        if(x == 38){
+            print("wow")
+            //isSet = true;
+            //setMode = false;
+            //setable = false;
+        }
+    }while(true);
+
 
 }
 
