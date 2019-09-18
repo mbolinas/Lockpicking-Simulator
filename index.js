@@ -16,4 +16,16 @@ $(function(){
         $('.lockpick-container').append(chamber);
         $('#chamber' + i).css({top: '0px', left: '0px'});
     }
+
+    let x = function(){
+        alert('wow');
+    }
+
+    //x();
+
+    $('.randomize-button').addEventListener('click', function(){
+        alert('uhh');
+    });
+
+
 });
