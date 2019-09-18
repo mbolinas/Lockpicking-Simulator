@@ -44,9 +44,11 @@ $(function(){
                     }, 200);
                 }
                 else{
-                    //TODO: convert 200 to a random amount per pin
+                    //TODO: convert 2000 to a random amount per pin, found in pin_set_range
                     if(Math.abs(Date.now() - time - pin_array[selected_pin]) < 2000){
                         pin_array[selected_pin] = -1;
+                        //TODO: place the set pin at correct height, corresponding to it's pin_falltime
+                        $('#pin' + selected_pin).css({top: '100px'});
                     }
                 }
                 update();
@@ -56,8 +58,10 @@ $(function(){
     //TODO:
     //make update() handle lockpick positioning onto correct pin
     function update(){
-        
-        $('.game-title').text('current pin: ' + selected_pin + ';     time (-1 for done): ' + pin_array[selected_pin] + 'str: ' + str);
+        var pin_pos = $('#pin' + selected_pin).offset();
+        //alert(pin_pos.left);
+        $('.image-lockpick').css(pin_pos);
+        //$('.game-title').text('current pin: ' + selected_pin + ';     time (-1 for done): ' + pin_array[selected_pin] + 'str: ' + str);
     }
 
     mode = {
