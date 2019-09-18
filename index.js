@@ -38,12 +38,15 @@ $(function(){
                     //alert('bruh');
                 }
                 else if(Date.now() - time > pin_max_fall_time_ms){
+
+                    
                     //if time between presses is greater than it takes for the pin to fall down, push pin up
                     time = Date.now();
-                    $('#chamber' + (selected_pin - 1)).css({top: '0px', transition: 'top .2s'});
+                    $('#pin' + (selected_pin - 1)).css({top: '0px', transition: 'top .15s'});
                     str = 'top ' + (pin_falltime[selected_pin - 1] / 1000) + 's';
+                    //TODO: if the user switches pins before setTimeout fires, it will call the wrong pin
                     setTimeout(() => {
-                        $('#chamber' + (selected_pin - 1)).css({top: '200px', transition: str});
+                        $('#pin' + (selected_pin - 1)).css({top: '200px', transition: str});
                     }, 200);
                     //$('#chamber' + (selected_pin - 1)).css({top: '200px', transition: str});
                     //alert('kicking');
@@ -59,8 +62,10 @@ $(function(){
                 break;
         }
     }
-
+    //TODO:
+    //make update() handle lockpick positioning onto correct pin
     function update(){
+        
         $('.game-title').text('current pin: ' + selected_pin + ';     time (-1 for done): ' + pin_array[selected_pin - 1] + 'str: ' + str);
     }
 
@@ -74,8 +79,9 @@ $(function(){
     });
     
     for(i = 0; i < pin_count; i++){
-        var chamber = '<div id=chamber' + i + ' class=chamber></div>';
+        var chamber = '<div id=chamber' + i + ' class=chamber><div id=pin' + i + ' class=pin></div></div>';
         $('.lockpick-container').append(chamber);
-        $('#chamber' + i).css({top: '200px', left: '0px'});
+        $('#chamber' + i).css({top: '0px', left: '0px'});
+        $('#pin' + i).css({top: '200px', left: '0px'});
     }
 });
