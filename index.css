@@ -53,6 +53,7 @@
 .image-lockpick{
     position: absolute;
     left: 8vw;
+    transition: left .3s, top .3s;
 }
 
 
