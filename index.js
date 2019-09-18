@@ -1,3 +1,13 @@
+$(function(){
+
+    document.addEventListener('keydown', function(e){
+        print(e.code);
+    });
+
+    $(document).on('keypress', function(evt){
+        print(evt.which);
+    });
+
 // up arrow - 38 or ArrowUp
 // left arrow - 37 or ArrowLeft
 // right arrow - 39 or ArrowRight
@@ -15,16 +25,17 @@ var lockpickGame = function(){
 
     
     //on up arrow press, run activatePin for a given pinId.
-    do{ 
-        var x = event.keyCode;
-        if(x == 38){
-            print("wow")
-            //isSet = true;
-            //setMode = false;
-            //setable = false;
-        }
-    }while(true);
-
+//    do{ 
+//
+//        var x = event.keydown;
+//        if(x == 38)
+//            print("wow")
+//            //isSet = true;
+//            //setMode = false;
+//            //setable = false;
+//        }
+//    }while(true);
+//
 
 }
 
@@ -47,11 +58,11 @@ var pin=function(pinId){
 
     this.setPin = function(){
         setMode = true;
-        let setTime = 2; //make randomized
+        let setTime = 2; //make randomizedu
         let unsetTime = 2; //mAkE rAnDoMiZeD
         setTimeout(function(){this.setable = true}, setTime);        
         setTimeout(function(){this.setable = false}, unsetTime);
         setMode = false;
     };
 
-}
+}});
