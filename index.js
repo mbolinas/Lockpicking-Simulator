@@ -8,7 +8,7 @@ $(function(){
     var pin_array = [300,500,600];
     var pin_array_init = [300, 500, 600];  //so that reset works
     var pin_falltime = [1000,1000,1000];
-    var pin_set_range = [2000,2000,2000];
+    var pin_set_range = [200,200,200];
 
 
     var selected_pin = -1;
@@ -58,10 +58,11 @@ $(function(){
                 //the pin is currently falling, user is trying to set it
                 else{
                     //TODO: convert 2000 to a random amount per pin, found in pin_set_range
-                    if(Math.abs(Date.now() - time - pin_array[selected_pin]) < 100){
+                    if((Date.now() - time - pin_array[selected_pin]) <= 0 && (Date.now() - time - pin_array[selected_pin] > -1 * pin_set_range[selected_pin])){
                         pin_array[selected_pin] = -1;
                         //TODO: place the set pin at correct height, corresponding to it's pin_falltime
-                        $('#pin' + selected_pin).css({top: '100px'});
+                        var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * 200;
+                        $('#pin' + selected_pin).css({top: pos + 'px'});
                     }
                     else{
                         for(var i = 0; i < pin_array_init.length; i++){
