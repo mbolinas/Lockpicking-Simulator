@@ -44,6 +44,9 @@ $(function(){
                 if(pin_array[selected_pin] === -1){
                     //we do nothing, probably just animate the lockpick kicking an empty chamber
                 }
+                else if(Math.abs(Date.now() - time) < 155){
+                    //bug fix nice
+                }
                 //if time between presses is greater than it takes for the pin to fall down, push pin up
                 else if(Date.now() - time > pin_max_fall_time_ms){
                     time = Date.now();
@@ -55,10 +58,16 @@ $(function(){
                 //the pin is currently falling, user is trying to set it
                 else{
                     //TODO: convert 2000 to a random amount per pin, found in pin_set_range
-                    if(Math.abs(Date.now() - time - pin_array[selected_pin]) < 2000){
+                    if(Math.abs(Date.now() - time - pin_array[selected_pin]) < 100){
                         pin_array[selected_pin] = -1;
                         //TODO: place the set pin at correct height, corresponding to it's pin_falltime
                         $('#pin' + selected_pin).css({top: '100px'});
+                    }
+                    else{
+                        for(var i = 0; i < pin_array_init.length; i++){
+                            pin_array[i] = pin_array_init[i];
+                            $('#pin' + i).css({top: '200px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
+                        }
                     }
                 }
                 update();
