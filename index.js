@@ -1,5 +1,5 @@
 $(function () {
-    mode = {
+    const mode = {
         'Easy Mode': 'Hard Mode',
         'Hard Mode': 'Easy Mode',
     }
@@ -8,26 +8,26 @@ $(function () {
         $('#level-label').html(mode[$('#level-label').html()]);
     });
 
-    $(document).keypress(function (evt) {
+    $(document).keydown(function (evt) {
         movePin();
         switch (evt.which) {
             // left
-            case 100:
+            case 39:
                 $("#pick").animate({ left: "+=5" }, 1);
                 break;
 
             // right
-            case 97:
+            case 37:
                 $("#pick").animate({ left: "-=5" }, 1);
                 break;
 
             // up
-            case 119:
+            case 38:
                 $("#pick").animate({ top: "-=5" }, 1);
                 break;
 
             // down
-            case 115:
+            case 40:
                 $("#pick").animate({ top: "+=5" }, 1);
                 break;
 
@@ -50,4 +50,10 @@ $(function () {
             pin.bottom < pick.top || 
             pin.top > pick.bottom
     }
+    
+    // for(i = 0; i < pin_count; i++){
+    //     var chamber = '<div id=chamber' + i + ' class=chamber></div>';
+    //     $('.lockpick-container').append(chamber);
+    //     $('#chamber' + i).css({top: '0px', left: '0px'});
+    // }
 });
