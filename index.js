@@ -44,7 +44,7 @@ $(function(){
                 if(pin_array[selected_pin] === -1){
                     //we do nothing, probably just animate the lockpick kicking an empty chamber
                 }
-                else if(Math.abs(Date.now() - time) < 155){
+                else if((Date.now() - time) < 155){
                     //bug fix nice
                 }
                 //if time between presses is greater than it takes for the pin to fall down, push pin up

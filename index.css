@@ -175,6 +175,8 @@ button:active{
     background-color: green;
     margin-left: 25px;
     margin-right: 25px;
+    padding-left: 10px;
+    padding-right: 10px;
     height: 200px;
     width: 50px;
     position: relative;
@@ -182,7 +184,7 @@ button:active{
 
 .pin{
     background-color: blue;
-    width: 50px;
+    width: 30px;
     height: 50px;
     position: relative;
 }
