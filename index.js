@@ -33,7 +33,7 @@ $(function(){
     }
 
     function reset(){
-        selected_pin = -1;
+        selected_pin = 0;
         time = 0;
         update();
     }
