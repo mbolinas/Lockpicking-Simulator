@@ -21,7 +21,7 @@ $(function(){
         pin_falltime.push((Math.random() * pin_max_fall_time_ms / 2) + (pin_max_fall_time_ms / 2));
         pin_array_init.push((Math.random() * pin_falltime[i] * .6) + (pin_falltime[i] * .2));
         pin_array.push(pin_array_init[i]);
-        pin_set_range.push((Math.random() * 150) + 150);
+        pin_set_range.push((Math.random() * 75) + 250);
     }
 
 
