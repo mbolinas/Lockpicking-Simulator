@@ -33,7 +33,7 @@ $(function(){
     }
 
     function reset(){
-        selected_pin = 0;
+        selected_pin = -1;
         time = 0;
         update();
     }
@@ -42,13 +42,13 @@ $(function(){
         switch(e.code){
             case 'KeyA':
                 //if statement prevents you from changing pin while a pin is falling
-                if(Date.now() - time > pin_falltime[selected_pin]){
+                if(selected_pin == -1 || Date.now() - time > pin_falltime[selected_pin]){
                     selected_pin = Math.max(0, selected_pin - 1);
                     update();
                 }
                 break;
             case 'KeyD':
-                if(Date.now() - time > pin_falltime[selected_pin]){
+                if(selected_pin == -1 || Date.now() - time > pin_falltime[selected_pin]){
                     selected_pin = Math.min(pin_count - 1, selected_pin + 1);
                     update();
                 }
