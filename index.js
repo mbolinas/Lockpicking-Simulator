@@ -27,6 +27,7 @@ $(function(){
 
     var selected_pin = -1;
     var time = 0;
+    var space_hit = false;
 
     function randomize(){
 
@@ -42,13 +43,15 @@ $(function(){
         switch(e.code){
             case 'KeyA':
                 //if statement prevents you from changing pin while a pin is falling
-                if(selected_pin == -1 || Date.now() - time > pin_falltime[selected_pin]){
+                if(selected_pin === -1 || Date.now() - time > pin_falltime[selected_pin]){
+                    space_hit = false;
                     selected_pin = Math.max(0, selected_pin - 1);
                     update();
                 }
                 break;
             case 'KeyD':
-                if(selected_pin == -1 || Date.now() - time > pin_falltime[selected_pin]){
+                if(selected_pin === -1 || Date.now() - time > pin_falltime[selected_pin]){
+                    space_hit = false;
                     selected_pin = Math.min(pin_count - 1, selected_pin + 1);
                     update();
                 }
@@ -60,6 +63,7 @@ $(function(){
                 }
                 else if((Date.now() - time) < 155){
                     //bug fix nice
+                    space_hit = false;
                 }
                 //if time between presses is greater than it takes for the pin to fall down, push pin up
                 else if(Date.now() - time > pin_max_fall_time_ms){
@@ -68,17 +72,20 @@ $(function(){
                     setTimeout(() => {
                         $('#pin' + (selected_pin)).css({top: '200px', transition: 'top ' + (pin_falltime[selected_pin] / 1000) + 's'});
                     }, 200);
+                    space_hit = false;
                 }
                 //the pin is currently falling, user is trying to set it
                 else{
-                    //TODO: convert 2000 to a random amount per pin, found in pin_set_range
-                    if((Date.now() - time - pin_array[selected_pin]) <= 0 && (Date.now() - time - pin_array[selected_pin] > -1 * pin_set_range[selected_pin])){
+                    //TODO: this pin-set time calculator is ass, find a better way to do it
+                    if(space_hit === false && (Date.now() - time - pin_array[selected_pin]) <= 0 && (Date.now() - time - pin_array[selected_pin] > -1 * pin_set_range[selected_pin])){
                         pin_array[selected_pin] = -1;
                         //position pin where it would be depending on when it's supposed to get set
                         var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * chamber_height_px;
                         $('#pin' + selected_pin).css({top: pos + 'px'});
+                        space_hit = true;
                     }
                     else{
+                        space_hit = true;
                         for(var i = 0; i < pin_array_init.length; i++){
                             pin_array[i] = pin_array_init[i];
                             $('#pin' + i).css({top: '200px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
