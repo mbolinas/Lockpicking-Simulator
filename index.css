@@ -187,6 +187,7 @@ button:active{
     width: 30px;
     height: 50px;
     position: relative;
+    transition-timing-function: linear;
 }
 
 

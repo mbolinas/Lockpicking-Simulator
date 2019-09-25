@@ -2,13 +2,27 @@ $(function(){
     document.addEventListener('keydown', keydownHandler);
 
     const pin_count = 3;
-    const pin_max_fall_time_ms = 1000;
+    const pin_max_fall_time_ms = 2000;
+
+    const chamber_height_px = 200;
 
     //TODO: convert to pin_array.push(randomized_amt)
-    var pin_array = [300,500,600];
-    var pin_array_init = [300, 500, 600];  //so that reset works
-    var pin_falltime = [1000,1000,1000];
-    var pin_set_range = [200,200,200];
+    //var pin_array = [300,500,600];
+    //var pin_array_init = [300, 500, 600];  //so that reset works
+    //var pin_falltime = [1000,1000,1000];
+    //var pin_set_range = [200,200,200];
+
+    var pin_array = [];
+    var pin_array_init = [];
+    var pin_falltime = [];
+    var pin_set_range = [];
+
+    for(var i = 0; i < pin_count; i++){
+        pin_falltime.push((Math.random() * pin_max_fall_time_ms / 2) + (pin_max_fall_time_ms / 2));
+        pin_array_init.push(Math.random() * pin_falltime[i] * .9);
+        pin_array.push(pin_array_init[i]);
+        pin_set_range.push((Math.random() * 150) + 150);
+    }
 
 
     var selected_pin = -1;
@@ -60,8 +74,8 @@ $(function(){
                     //TODO: convert 2000 to a random amount per pin, found in pin_set_range
                     if((Date.now() - time - pin_array[selected_pin]) <= 0 && (Date.now() - time - pin_array[selected_pin] > -1 * pin_set_range[selected_pin])){
                         pin_array[selected_pin] = -1;
-                        //TODO: place the set pin at correct height, corresponding to it's pin_falltime
-                        var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * 200;
+                        //position pin where it would be depending on when it's supposed to get set
+                        var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * chamber_height_px;
                         $('#pin' + selected_pin).css({top: pos + 'px'});
                     }
                     else{
@@ -81,7 +95,7 @@ $(function(){
         var pin_pos = $('#chamber' + selected_pin).offset();
         //alert(pin_pos.left);
         $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
-        //$('.game-title').text('current pin: ' + selected_pin + ';     time (-1 for done): ' + pin_array[selected_pin] + 'str: ' + str);
+        //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
     }
 
     mode = {
