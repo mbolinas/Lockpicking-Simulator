@@ -179,22 +179,30 @@ button:active{
     background-color: green;
     margin-left: 25px;
     margin-right: 25px;
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 200px;
+    height: 300px;
     width: 50px;
     position: relative;
+    padding: 0;
 }
 
 .pin{
     background-color: blue;
+    margin-left: 10px;
+    margin-right: 10px;
     width: 30px;
-    height: 50px;
+    height: 20px;
     position: relative;
     transition-timing-function: linear;
 }
 
-
+.set-point{
+    position: relative;
+    background-color: black;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 30px;
+    height: 10px;
+}
 
 
 .test{
