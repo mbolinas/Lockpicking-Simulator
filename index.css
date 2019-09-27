@@ -56,6 +56,10 @@
     transition: left .3s, top .3s;
 }
 
+.image-pin{
+    left: 2vw;
+}
+
 
 
 @-webkit-keyframes Gradient {
