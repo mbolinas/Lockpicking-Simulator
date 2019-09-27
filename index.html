@@ -18,14 +18,15 @@
 </head>
 
 <body>
+
     <div class='game-window'>
         <h1 class='game-title'>Lockpicking Simulator</h1>
 
         <div class='game-window__game-options'>
-            <button>
+            <button id='randomize'>
                 <h3>Randomize</h3>
             </button>
-            <button>
+            <button id='reset'>
                 <h3>Restart</h3>
             </button>
             <button data-toggle="modal" data-target="#modalInfo">
@@ -40,9 +41,6 @@
             </div>
         </div>
         <div class='lockpick-container'>
-            <img class='image-lock' src='./lock.png' alt='lock-img' />
-            <img id="pick" class='image-lockpick' src='./pick.png' alt='lockpick-img' />
-            <img class="image-pin" src="./pin.png" alt="pin-img">
             <img class='image-lockpick' src='./pick.png' alt='lockpick-img' />
         </div>
     </div>
@@ -57,7 +55,8 @@
                 </div>
                 <div class="modal-body text-left">
                     <ul>
-                        <li>Fuck you</li>
+                        <li>Press 'A', 'D' to move the pick left and right</li>
+                        <li>Press 'Space' to tick the pin'</li>>
                     </ul>
                 </div>
                 <div class="modal-footer">
@@ -66,6 +65,7 @@
             </div>
         </div>
     </div>
+
 </body>
 
 </html>
