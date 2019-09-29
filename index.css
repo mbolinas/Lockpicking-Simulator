@@ -40,18 +40,30 @@
     padding-bottom: 4vh;
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 }
-
-
 
 .image-lock{
     height: 100%;
 }
 
+.lock_body{
+    margin-top: 0vh;
+    background-color: rgb(51, 45, 38);
+    border-radius: 13px;
+    padding-top: 4vh;
+    padding-bottom: 8vh;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 .image-lockpick{
     position: absolute;
+    height: 70%;
+    width: 40%;
+    top: 35vw;
     left: 8vw;
     transition: left .3s, top .3s;
 }
@@ -177,8 +189,8 @@ button:active{
 
 .chamber{
     background-color: green;
-    margin-left: 25px;
-    margin-right: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
     height: 300px;
     width: 50px;
     position: relative;

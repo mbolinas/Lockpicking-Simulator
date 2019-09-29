@@ -9,7 +9,8 @@ $(function(){
 
     for(i = 0; i < pin_count; i++){
         var chamber = '<div id=chamber' + i + ' class=chamber><div id=set-point' + i + ' class=set-point></div><div id=pin' + i + ' class=pin></div></div>';
-        $('.lockpick-container').append(chamber);
+        //$('.lockpick-container').append(chamber);
+        $('.lock_body').append(chamber);
         $('#chamber' + i).css({top: '0px', left: '0px'});
         $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', left: '0px'});
     }
@@ -128,7 +129,9 @@ $(function(){
     function update(){
         var pin_pos = $('#chamber' + selected_pin).offset();
         //alert(pin_pos.left);
-        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
+        //$('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
+        $('.image-lockpick').css({left: (pin_pos.left - 350)});
+        
         //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
     }
 
