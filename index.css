@@ -61,9 +61,8 @@
 }
 .image-lockpick{
     position: absolute;
-    height: 70%;
-    width: 40%;
-    top: 35vw;
+    height: 8%;
+    width: 28%;
     left: 8vw;
     transition: left .3s, top .3s;
 }

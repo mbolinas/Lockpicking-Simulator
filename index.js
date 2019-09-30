@@ -129,8 +129,8 @@ $(function(){
     function update(){
         var pin_pos = $('#chamber' + selected_pin).offset();
         //alert(pin_pos.left);
-        //$('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
-        $('.image-lockpick').css({left: (pin_pos.left - 350)});
+        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
+        //$('.image-lockpick').css({left: (pin_pos.left - 350)});
         
         //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
     }
