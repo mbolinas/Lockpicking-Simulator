@@ -6,6 +6,14 @@ $(function(){
 
     const chamber_height_px = 300;
 
+    const mode = {
+        'Easy Mode': 'Hard Mode',
+        'Hard Mode': 'Easy Mode',
+    }
+
+    const lock_opened = new Audio("lock_been_opened.wav");
+    const pick_sound = new Audio("pick_sound.wav");
+
 
     for(i = 0; i < pin_count; i++){
         var chamber = '<div id=chamber' + i + ' class=chamber><div id=set-point' + i + ' class=set-point></div><div id=pin' + i + ' class=pin></div></div>';
@@ -50,19 +58,18 @@ $(function(){
             pin_falltime.push((Math.random() * pin_max_fall_time_ms / 2) + (pin_max_fall_time_ms / 2));
             pin_array_init.push((Math.random() * pin_falltime[i] * .6) + (pin_falltime[i] * .2));
             pin_array.push(pin_array_init[i]);
-            pin_set_range.push((Math.random() * 150) + 150);
+            pin_set_range.push((Math.random() * 75) + 250);
+
+            var pos = (pin_array_init[i] / pin_falltime[i]) * chamber_height_px;
+            $('#set-point' + i).css({top: pos + 'px'});
         }
     }
 
     function reset(){
-        //selected_pin = -1;
-        time = 0;
-        //pin_array = pin_array_init;
         for(var i = 0; i < pin_array_init.length; i++){
             pin_array[i] = pin_array_init[i];
             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
         }
-        update();
     }
 
     $('#randomize').on('click', function (){
@@ -112,12 +119,24 @@ $(function(){
                         //position pin where it would be depending on when it's supposed to get set
                         var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * chamber_height_px;
                         $('#pin' + selected_pin).css({top: pos + 'px'});
+
+                        // Add Sound
+                        $('#pin' + selected_pin).addClass("pin_set");
+                        if ($(".pin_set").length == pin_count){
+                            lock_opened.play();
+                        }
+                        else{
+                            pick_sound.play();
+                        }
                     }
                     else{
                         for(var i = 0; i < pin_array_init.length; i++){
                             pin_array[i] = pin_array_init[i];
                             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
                         }
+
+                        // Remove pin_set class
+                        $(".pin_set").removeClass("pin_set");
                     }
                 }
                 update();
@@ -135,10 +154,7 @@ $(function(){
         //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
     }
 
-    const mode = {
-        'Easy Mode': 'Hard Mode',
-        'Hard Mode': 'Easy Mode',
-    }
+    
 
     $('#level-switch').on('click', function (){
         $('#level-label').html(mode[$('#level-label').html()]);
