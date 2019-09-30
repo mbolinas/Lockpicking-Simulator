@@ -66,9 +66,6 @@ $(function(){
     }
 
     function reset(){
-        //selected_pin = -1;
-        time = 0;
-        //pin_array = pin_array_init;
         for(var i = 0; i < pin_array_init.length; i++){
             pin_array[i] = pin_array_init[i];
             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
