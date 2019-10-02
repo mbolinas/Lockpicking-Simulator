@@ -187,7 +187,9 @@ button:active{
 }
 
 .chamber{
-    background-color: green;
+
+    background-image: url(chamber_resized.png);
+    background-size: 100% 100%;
     margin-left: 10px;
     margin-right: 10px;
     height: 300px;
@@ -197,7 +199,8 @@ button:active{
 }
 
 .pin{
-    background-color: blue;
+    background-image: url(pin_resized.png);
+    background-size: 100% 100%;
     margin-left: 10px;
     margin-right: 10px;
     width: 30px;
@@ -208,7 +211,7 @@ button:active{
 
 .set-point{
     position: relative;
-    background-color: black;
+    background-color: #00000044;
     margin-left: 10px;
     margin-right: 10px;
     width: 30px;

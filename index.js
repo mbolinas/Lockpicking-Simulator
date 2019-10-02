@@ -1,7 +1,8 @@
 $(function(){
+    
     document.addEventListener('keydown', keydownHandler);
 
-    const pin_count = 3;
+    const pin_count = 12;
     const pin_max_fall_time_ms = 2000;
 
     const chamber_height_px = 300;
@@ -148,13 +149,16 @@ $(function(){
     function update(){
         var pin_pos = $('#chamber' + selected_pin).offset();
         //alert(pin_pos.left);
-        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height()) + 'px', left: (pin_pos.left - $('.image-lockpick').width()) + 'px'});
+        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height() + 10) + 'px', left: (pin_pos.left - $('.image-lockpick').width() + 30) + 'px'});
         //$('.image-lockpick').css({left: (pin_pos.left - 350)});
-        
-        //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
-    }
 
+        //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
+
+    }
     
+    function win() {
+        $("#modalWin").modal();
+    }
 
     $('#level-switch').on('click', function (){
         $('#level-label').html(mode[$('#level-label').html()]);
