@@ -14,8 +14,8 @@
 .game-title{
     color: white;
     font-size: 3.33rem;
-    padding-top: 8vh;
-    padding-bottom: 8vh; 
+    padding-top: 5vh;
+    padding-bottom: 5vh; 
 }
 
 .game-window__game-options{
@@ -32,11 +32,11 @@
 
 
 .lockpick-container{
-    margin-top: 8vh;
+    margin-top: 5vh;
     background-color: rgba(255,255,255,.4);
     border-radius: 13px;
-    padding-top: 4vh;
-    padding-bottom: 4vh;
+    padding-top: 6vh;
+    padding-bottom: 6vh;
     width: 100%;
     display: flex;
     align-items: start;
@@ -198,11 +198,19 @@ button:active{
     padding: 0;
 }
 
+.hold-pin{
+    background-color: rgba(0,0,255,.7);
+    width: 50px;
+    height: 50px;
+    position: relative;
+    transition-timing-function: linear;
+}
+
 .pin{
     background-image: url(pin_resized.png);
     background-size: 100% 100%;
     margin-left: 10px;
-    margin-right: 10px;
+    margin-right: 10px; 
     width: 30px;
     height: 20px;
     position: relative;
@@ -210,6 +218,7 @@ button:active{
 }
 
 .set-point{
+    display: none;
     position: relative;
     background-color: #00000022;
     margin-left: 10px;

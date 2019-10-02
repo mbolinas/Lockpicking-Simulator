@@ -17,19 +17,12 @@ $(function(){
 
 
     for(i = 0; i < pin_count; i++){
-        var chamber = '<div id=chamber' + i + ' class=chamber><div id=set-point' + i + ' class=set-point></div><div id=pin' + i + ' class=pin></div></div>';
+        var chamber = '<div id=chamber' + i + ' class=chamber><div id=hold-pin' + i + ' class=hold-pin></div><div id=set-point' + i + ' class=set-point></div><div id=pin' + i + ' class=pin></div></div>';
         //$('.lockpick-container').append(chamber);
         $('.lock_body').append(chamber);
         $('#chamber' + i).css({top: '0px', left: '0px'});
-        $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', left: '0px'});
+        //$('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', left: '0px'});
     }
-
-
-    //TODO: convert to pin_array.push(randomized_amt)
-    //var pin_array = [300,500,600];
-    //var pin_array_init = [300, 500, 600];  //so that reset works
-    //var pin_falltime = [1000,1000,1000];
-    //var pin_set_range = [200,200,200];
 
     var pin_array = [];
     var pin_array_init = [];
@@ -43,7 +36,11 @@ $(function(){
         pin_set_range.push((Math.random() * 75) + 250);
 
         var pos = (pin_array_init[i] / pin_falltime[i]) * chamber_height_px;
-        $('#set-point' + i).css({top: pos + 'px'});
+        //$('#set-point' + i).css({top: pos + 'px'});
+        $('#pin' + i).css({height: (Math.max(30, (chamber_height_px - pos) / 2)) + 'px'});
+        $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
+        $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
+
     }
 
 
@@ -61,8 +58,13 @@ $(function(){
             pin_array.push(pin_array_init[i]);
             pin_set_range.push((Math.random() * 75) + 250);
 
+            //var pos = (pin_array_init[i] / pin_falltime[i]) * chamber_height_px;
+            //$('#set-point' + i).css({top: pos + 'px'});
             var pos = (pin_array_init[i] / pin_falltime[i]) * chamber_height_px;
-            $('#set-point' + i).css({top: pos + 'px'});
+            //$('#set-point' + i).css({top: pos + 'px'});
+            $('#pin' + i).css({height: (Math.max(30, (chamber_height_px - pos) / 2)) + 'px'});
+            $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
+            $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
         }
     }
 
@@ -70,6 +72,7 @@ $(function(){
         for(var i = 0; i < pin_array_init.length; i++){
             pin_array[i] = pin_array_init[i];
             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
+            $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
         }
     }
 
@@ -97,6 +100,11 @@ $(function(){
                 }
                 break;
             case 'Space':
+                e.preventDefault();
+                //$('.image-lockpick').css({transform: 'rotate(-20deg)'});
+                setTimeout(() => {
+                    //$('.image-lockpick').css({transform: 'rotate(0deg)'});
+                }, 200);
                 //this means this pin is already set
                 if(pin_array[selected_pin] === -1){
                     //we do nothing, probably just animate the lockpick kicking an empty chamber
@@ -108,18 +116,19 @@ $(function(){
                 else if(Date.now() - time > pin_max_fall_time_ms){
                     time = Date.now();
                     $('#pin' + (selected_pin)).css({top: '0px', transition: 'top .15s'});
+                    $('#hold-pin' + selected_pin).css({top: '0px', transition: 'top .15s'});
                     setTimeout(() => {
                         $('#pin' + (selected_pin)).css({top: (chamber_height_px - $('#pin' + selected_pin).height()) + 'px', transition: 'top ' + (pin_falltime[selected_pin] / 1000) + 's'});
+                        $('#hold-pin' + (selected_pin)).css({top: (chamber_height_px - $('#pin' + selected_pin).height()) + 'px', transition: 'top ' + (pin_falltime[selected_pin] / 1000) + 's'});
                     }, 200);
                 }
                 //the pin is currently falling, user is trying to set it
                 else{
-                    //TODO: convert 2000 to a random amount per pin, found in pin_set_range
                     if((Date.now() - time - pin_array[selected_pin]) <= 0 && (Date.now() - time - pin_array[selected_pin] > -1 * pin_set_range[selected_pin])){
                         pin_array[selected_pin] = -1;
                         //position pin where it would be depending on when it's supposed to get set
                         var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * chamber_height_px;
-                        $('#pin' + selected_pin).css({top: pos + 'px'});
+                        $('#hold-pin' + selected_pin).css({top: (chamber_height_px / 3) + 'px'});
 
                         // Add Sound
                         $('#pin' + selected_pin).addClass("pin_set");
@@ -134,6 +143,7 @@ $(function(){
                         for(var i = 0; i < pin_array_init.length; i++){
                             pin_array[i] = pin_array_init[i];
                             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
+                            $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
                         }
 
                         // Remove pin_set class
@@ -149,7 +159,7 @@ $(function(){
     function update(){
         var pin_pos = $('#chamber' + selected_pin).offset();
         //alert(pin_pos.left);
-        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height() + 10) + 'px', left: (pin_pos.left - $('.image-lockpick').width() + 30) + 'px'});
+        $('.image-lockpick').css({top: (pin_pos.top + $('#chamber' + selected_pin).height() + 50) + 'px', left: (pin_pos.left - $('.image-lockpick').width() + 30) + 'px'});
         //$('.image-lockpick').css({left: (pin_pos.left - 350)});
 
         //$('.game-title').text('pos: ' + pin_array[selected_pin] + ', falltime: ' + pin_falltime[selected_pin] + ', range: ' + pin_set_range[selected_pin]);
