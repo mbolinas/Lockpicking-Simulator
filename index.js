@@ -2,7 +2,7 @@ $(function(){
     
     document.addEventListener('keydown', keydownHandler);
 
-    const pin_count = 4;
+    const pin_count = 5;
     const pin_max_fall_time_ms = 2000;
 
     const chamber_height_px = 300;
