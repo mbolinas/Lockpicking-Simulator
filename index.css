@@ -201,13 +201,17 @@ button:active{
 .spring{
     position: absolute;
     background-color: rgba(0,0,0,.2);
-    width: 50px;
+    width: 46px;
+    margin-left: 2px;
+    margin-right: 2px;
     transition-timing-function: linear;
 }
 
 .hold-pin{
     background-color: rgba(0,0,255,.7);
-    width: 50px;
+    width: 40px;
+    margin-left: 5px;
+    margin-right: 5px;
     height: 50px;
     position: relative;
     transition-timing-function: linear;
@@ -216,9 +220,9 @@ button:active{
 .pin{
     background-image: url(pin_resized.png);
     background-size: 100% 100%;
-    margin-left: 10px;
-    margin-right: 10px; 
-    width: 30px;
+    margin-left: 5px;
+    margin-right: 5px; 
+    width: 40px;
     height: 20px;
     position: relative;
     transition-timing-function: linear;
