@@ -61,6 +61,7 @@ $(function(){
             $('#pin' + i).css({height: (Math.max(30, (chamber_height_px - pos) / 2)) + 'px'});
             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
             $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
+            $('#spring' + i).css({height: (chamber_height_px - $('#pin' + i).height()) + 'px'});
         }
     }
 
@@ -69,6 +70,7 @@ $(function(){
             pin_array[i] = pin_array_init[i];
             $('#pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
             $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
+            $('#spring' + i).css({height: (chamber_height_px - $('#pin' + i).height()) + 'px'});
         }
     }
 
