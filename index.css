@@ -198,6 +198,13 @@ button:active{
     padding: 0;
 }
 
+.spring{
+    position: absolute;
+    background-color: rgba(0,0,0,.2);
+    width: 50px;
+    transition-timing-function: linear;
+}
+
 .hold-pin{
     background-color: rgba(0,0,255,.7);
     width: 50px;
