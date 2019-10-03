@@ -63,6 +63,7 @@ $(function(){
             $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px'});
             $('#spring' + i).css({height: (chamber_height_px - $('#pin' + i).height()) + 'px'});
         }
+        $('.lock_status').attr('src', 'closed.png');
     }
 
     function reset(){
@@ -72,6 +73,7 @@ $(function(){
             $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
             $('#spring' + i).css({height: (chamber_height_px - $('#pin' + i).height()) + 'px'});
         }
+        $('.lock_status').attr('src', 'closed.png');
     }
 
     $('#randomize').on('click', function (){
@@ -164,6 +166,15 @@ $(function(){
                 update();
                 break;
         }
+        var win = true;
+        for(var i = 0; i < pin_array.length; i++){
+            if(pin_array[i] !== -1){
+                win = false;
+            }
+        }
+        if(win){
+            $('.lock_status').attr('src', 'open.png');
+        }
     }
 
     function update(){
@@ -177,12 +188,15 @@ $(function(){
 
     $('#level-switch').on('click', function (){
         $('#level-label').html(mode[$('#level-label').html()]);
-        //alert($('.lock_body').length);
-        if($('.hidden').length >= 1){
-            $('.lock_body').removeClass('hidden');
+        if($('.hidden').length >= pin_count){
+            $('.chamber').removeClass('hidden');
+            $('.lock_body').css({zIndex: '1'});
+            //$('.lock_body').css({backgroundImage: ''});
         }
         else{
-            $('.lock_body').addClass('hidden');
+            $('.chamber').addClass('hidden');
+            $('.lock_body').css({zIndex: '3'});
+            //$('.lock_body').css({backgroundImage: ''});
         }
     });
 
