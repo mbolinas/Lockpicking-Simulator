@@ -47,6 +47,10 @@
     height: 100%;
 }
 
+.hidden{
+    visibility: hidden;
+}
+
 .lock_body{
     margin-top: 0vh;
     background-color: rgb(51, 45, 38);

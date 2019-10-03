@@ -177,6 +177,13 @@ $(function(){
 
     $('#level-switch').on('click', function (){
         $('#level-label').html(mode[$('#level-label').html()]);
+        //alert($('.lock_body').length);
+        if($('.hidden').length >= 1){
+            $('.lock_body').removeClass('hidden');
+        }
+        else{
+            $('.lock_body').addClass('hidden');
+        }
     });
 
 });
