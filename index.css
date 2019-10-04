@@ -58,7 +58,8 @@
 .lock_body{
     z-index: 1;
     margin-top: 0vh;
-    background-color: rgb(51, 45, 38);
+    background-image: url(lockbody_hardmode_cornered.png);
+    background-size: 100% 100%;
     border-radius: 13px;
     padding-top: 4vh;
     padding-bottom: 8vh;
@@ -74,7 +75,7 @@
 .image-lockpick{
     z-index: 2;
     position: absolute;
-    height: 8%;
+    height: 5%;
     width: 28%;
     left: 8vw;
     transition: left .3s, top .3s;
@@ -213,7 +214,8 @@ button:active{
 
 .spring{
     position: absolute;
-    background-color: rgba(0,0,0,.2);
+    background-image: url(spring.png);
+    background-size: 100% 100%;
     width: 46px;
     margin-left: 2px;
     margin-right: 2px;
@@ -221,7 +223,8 @@ button:active{
 }
 
 .hold-pin{
-    background-color: rgba(0,0,255,.7);
+    background-image: url(pin_resized.png);
+    background-size: 100% 100%;
     width: 40px;
     margin-left: 5px;
     margin-right: 5px;
@@ -244,7 +247,7 @@ button:active{
 .set-point{
     display: none;
     position: relative;
-    background-color: #00000022;
+    background-color: #00000000;
     margin-left: 10px;
     margin-right: 10px;
     width: 30px;
