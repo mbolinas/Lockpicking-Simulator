@@ -193,7 +193,7 @@ $(function(){
     }
 
     $('#level-switch').on('click', function (){
-        $('#level-label').html(mode[$('#level-label').html()]);
+        //$('#level-label').html(mode[$('#level-label').html()]);
         if($('.hidden').length >= pin_count){
             $('.chamber').removeClass('hidden');
             $('.lock_body').css({zIndex: '1'});
