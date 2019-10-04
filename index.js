@@ -14,7 +14,7 @@ $(function(){
 
     const lock_opened = new Audio("lock_been_opened.wav");
     const pick_sound = new Audio("pick_sound.wav");
-
+    const insert_key = new Audio("insert_key.wav");
 
     for(i = 0; i < pin_count; i++){
         var chamber = '<div id=chamber' + i + ' class=chamber><div id=spring' + i + ' class=spring></div><div id=hold-pin' + i + ' class=hold-pin></div><div id=set-point' + i + ' class=set-point></div><div id=pin' + i + ' class=pin></div></div>';
@@ -77,10 +77,12 @@ $(function(){
     }
 
     $('#randomize').on('click', function (){
+        insert_key.play();
         randomize();
     });
 
     $('#reset').on('click', function (){
+        insert_key.play();
         reset();
     });
 
@@ -151,6 +153,7 @@ $(function(){
                             if(pin_array[i] === -1){
                                 setTimeout(() => {
                                     //TODO: play pin-hit-bottom sound
+                                    insert_key.play();
                                 }, pin_falltime[i]);
                             }
                             pin_array[i] = pin_array_init[i];
@@ -158,7 +161,6 @@ $(function(){
                             $('#hold-pin' + i).css({top: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'top ' + (pin_falltime[i] / 1000) + 's'});
                             $('#spring' + i).css({height: (chamber_height_px - $('#pin' + i).height()) + 'px', transition: 'height ' + (pin_falltime[i] / 1000) + 's'});
                         }
-
                         // Remove pin_set class
                         $(".pin_set").removeClass("pin_set");
                     }
