@@ -58,7 +58,7 @@
 .lock_body{
     z-index: 1;
     margin-top: 0vh;
-    background-image: url(lockbody_hardmode_cornered.png);
+    background-image: url(lockbody_easy_cornered.png);
     background-size: 100% 100%;
     border-radius: 13px;
     padding-top: 4vh;

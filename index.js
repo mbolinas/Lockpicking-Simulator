@@ -111,7 +111,6 @@ $(function(){
                     $('#pin' + selected_pin).css({top: (chamber_height_px / 2) + 'px', transition: 'top .15s'});
                     setTimeout(() => {
                         $('#pin' + (selected_pin)).css({top: (chamber_height_px - $('#pin' + selected_pin).height()) + 'px', transition: 'top .2s'});
-                        //TODO: play pin-hit-bottom sound
                     }, 150);
                     //we do nothing, probably just animate the lockpick kicking an empty chamber
                 }
@@ -121,14 +120,19 @@ $(function(){
                 //if time between presses is greater than it takes for the pin to fall down, push pin up
                 else if(Date.now() - time > pin_max_fall_time_ms){
                     time = Date.now();
-                    //TODO: play pin-hits-top sound
                     $('#pin' + (selected_pin)).css({top: '0px', transition: 'top .15s'});
                     $('#hold-pin' + selected_pin).css({top: '0px', transition: 'top .15s'});
                     $('#spring' + selected_pin).css({height: '0px', transition: 'height .15s'});
+
                     setTimeout(() => {
                         $('#pin' + (selected_pin)).css({top: (chamber_height_px - $('#pin' + selected_pin).height()) + 'px', transition: 'top ' + (pin_falltime[selected_pin] / 1000) + 's'});
                         $('#hold-pin' + (selected_pin)).css({top: (chamber_height_px - $('#pin' + selected_pin).height()) + 'px', transition: 'top ' + (pin_falltime[selected_pin] / 1000) + 's'});
                         $('#spring' + selected_pin).css({height: (chamber_height_px - $('#pin' + selected_pin).height()) + 'px', transition: 'height ' + (pin_falltime[selected_pin] / 1000) + 's'});
+                        setTimeout(() => {
+                            if(pin_array[selected_pin] !== -1){
+                                insert_key.play();
+                            }
+                        }, pin_falltime[selected_pin - 50]);
                     }, 200);
                 }
                 //the pin is currently falling, user is trying to set it
@@ -193,12 +197,12 @@ $(function(){
         if($('.hidden').length >= pin_count){
             $('.chamber').removeClass('hidden');
             $('.lock_body').css({zIndex: '1'});
-            //$('.lock_body').css({backgroundImage: ''});
+            $('.lock_body').css({backgroundImage: 'url(./lockbody_easy_cornered.png)'});
         }
         else{
             $('.chamber').addClass('hidden');
             $('.lock_body').css({zIndex: '3'});
-            //$('.lock_body').css({backgroundImage: ''});
+            $('.lock_body').css({backgroundImage: 'url(./lockbody_hardmode_cornered.png)'});
         }
     });
 
