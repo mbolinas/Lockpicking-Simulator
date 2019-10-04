@@ -141,8 +141,8 @@ $(function(){
                         pin_array[selected_pin] = -1;
                         //position pin where it would be depending on when it's supposed to get set
                         var pos = (pin_array_init[selected_pin] / pin_falltime[selected_pin]) * chamber_height_px;
-                        $('#hold-pin' + selected_pin).css({top: (chamber_height_px / 3) + 'px'});
-                        $('#spring' + selected_pin).css({height: (chamber_height_px / 3) + 'px'});
+                        $('#hold-pin' + selected_pin).css({top: (chamber_height_px / 3) - 10 + 'px'});
+                        $('#spring' + selected_pin).css({height: (chamber_height_px / 3) - 10 + 'px'});
                         // Add Sound
                         $('#pin' + selected_pin).addClass("pin_set");
                         if ($(".pin_set").length == pin_count){
